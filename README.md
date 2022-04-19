@@ -67,22 +67,27 @@ You can run `KafkaStreamsProducerApp` or do it manually yourself as below
 `docker exec -it broker kafka-console-producer --bootstrap-server broker:9092 --property parse.key=true --property key.separator=,  --topic discounts`
 
 profile1,{"profile":"profile1","amount":0.5 }
+
 profile2,{"profile":"profile2","amount":0.25 }
+
 profile3,{"profile":"profile3","amount":0.15 }
 
 `docker exec -it broker kafka-console-producer --bootstrap-server broker:9092 --property parse.key=true --property key.separator=,  --topic discount-profiles-by-user`
 
 Daniel,profile1
+
 Riccardo,profile2
 
 `docker exec -it broker kafka-console-producer --bootstrap-server broker:9092 --property parse.key=true --property key.separator=,  --topic orders-by-user`
 
 Daniel,{"orderId":"order1","user":"Daniel","products":[ "iPhone 13","MacBook Pro 15"],"amount":4000.0 }
+
 Riccardo,{"orderId":"order2","user":"Riccardo","products":["iPhone 11"],"amount":800.0}
 
 `docker exec -it broker kafka-console-producer --bootstrap-server broker:9092 --property parse.key=true --property key.separator=,  --topic payments`
 
 order1,{"orderId":"order1","status":"PAID"}
+
 order2,{"orderId":"order2","status":"PENDING"}
 
 `docker exec -it broker kafka-console-consumer --bootstrap-server broker:9092 --topic paid-orders --from-beginning`
